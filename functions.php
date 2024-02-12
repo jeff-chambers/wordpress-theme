@@ -38,6 +38,10 @@ Load Gravity Form Scripts in the Footer
 include_once('functions/gravity-forms.php');
 
 
+/*
+Add Custom User Role
+*/
+include_once('functions/user-role.php');
 
 
 
