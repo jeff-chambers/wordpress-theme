@@ -65,7 +65,8 @@ task('html', function() {
 
 task('default', function() {
     browserSync.init({
-        proxy: "http://nsfamilylawfirm.local/",
+        // Update Local Wordpress URL Here
+        proxy: "",
         notify: false
     });
     watch('js/src/**/*.js', series('js'));

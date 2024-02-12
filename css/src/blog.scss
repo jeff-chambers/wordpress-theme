@@ -1,0 +1,17 @@
+@use "../variables/variables" as *;
+@use "../variables/mixins" as *;
+
+.blog,
+.category,
+.archive {
+  .post {
+    border-bottom: 1px solid $color-tertiary;
+    padding-bottom: $article-padding-desktop;
+    margin-bottom: $article-padding-desktop;
+  }
+  .pagination {
+    h2 {
+      display: none;
+    }
+  } 
+}

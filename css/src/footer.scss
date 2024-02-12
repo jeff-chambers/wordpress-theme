@@ -1,0 +1,263 @@
+@use "../variables/variables" as *;
+@use "../variables/mixins" as *;
+
+.footer {
+  // Container
+  &__container {
+    max-width: $footer-container-width;
+    @include flex-between;
+    @media screen and (max-width: $breakpoint-md) {
+      flex-flow: row wrap;
+    }
+  }
+
+  // Form
+  &__form {
+    background: $footer-form-background;
+    padding: $footer-form-padding;
+    text-align: $footer-form-text-align;
+    color: $footer-form-color;
+    @media screen and (max-width: $breakpoint-md) {
+      padding: 3rem 1.5rem;
+    }
+    &--intro {
+      width: $footer-intro-width;
+      @media screen and (max-width: $breakpoint-md) {
+        width: 100%;
+        margin-bottom: 3rem;
+      }
+      &--title {
+        font-family: $footer-intro-font-family;
+        font-size: $footer-intro-title-font-size;
+        margin-bottom: $footer-intro-title-margin-bottom;
+        position: relative;
+        @media screen and (max-width: $breakpoint-md) {
+          font-size: 34px;
+        }
+        @media screen and (max-width: $breakpoint-sm) {
+          font-size: 35px;
+          margin-bottom: 2rem;
+        }
+        &:after {
+          content: "";
+          display: block;
+          margin: 1rem auto 2rem;
+          width: 80%;
+          height: 1px;
+          background: #848383;
+          @media screen and (max-width: $breakpoint-sm) {
+            display: none;
+          }
+        }
+        span {
+          font-size: $footer-intro-title-span-font-size;
+          display: block;
+          @media screen and (max-width: $breakpoint-md) {
+            font-size: 80px;
+          }
+          @media screen and (max-width: $breakpoint-sm) {
+            font-size: 69px;
+          }
+        }
+      }
+      &--tagline {
+        font-family: $footer-intro-p-font-family;
+        font-size: $footer-intro-p-font-size;
+        margin-bottom: $footer-intro-p-margin-bottom;
+        @media screen and (max-width: $breakpoint-sm) {
+          font-size: 14px;
+          line-height: 23px;
+        }
+      }
+    }
+
+    &--form {
+      width: calc(100% - $footer-intro-width);
+      max-width: $footer-form-width;
+      @media screen and (max-width: $breakpoint-md) {
+        width: 100%;
+        max-width: 100%;
+      }
+    }
+    .gfields {
+      display: grid;
+      grid-template-rows: repeat(2, auto);
+      grid-template-columns: repeat(3, 1fr);
+      grid-column-gap: 1rem;
+    }
+    .gfield--type-textarea {
+      grid-column: 1 / -1;
+    }
+    input,
+    textarea {
+      width: 100%;
+      padding: $footer-form-input-padding;
+      margin-bottom: $footer-form-input-margin;
+      border: $footer-form-input-border;
+      background: $footer-form-input-background;
+      color: $footer-form-input-color;
+      &::placeholder {
+        color: $footer-form-input-placeholder;
+      }
+    }
+    textarea {
+      height: 150px;
+    }
+    input[type="submit"] {
+      @include button(
+        $footer-form-button-color,
+        $footer-form-button-background,
+        $footer-form-button-border-radius
+      );
+      @media screen and (max-width: $breakpoint-sm) {
+        border-radius: 0;
+        letter-spacing: 2px;
+        padding: 1.5rem 1rem;
+      }
+    }
+    .gfield--type-honeypot,
+    .gfield_label {
+      display: none;
+    }
+  }
+
+  // Content
+  &__content {
+    background: $footer-content-background;
+    padding: $footer-content-padding;
+    text-align: $footer-content-text-align;
+    color: $footer-content-color;
+    @media screen and (max-width: $breakpoint-md) {
+      padding: 3rem 1.5rem;
+    }
+  }
+
+  // Info
+  &__info {
+    @media screen and (max-width: $breakpoint-md) {
+      max-width: 380px;
+      margin: auto;
+    }
+  }
+
+  // Socials
+  &__socials {
+    padding: $footer-socials-padding;
+    a {
+      background: $color-black;
+      width: $footer-socials-a-width;
+      height: $footer-socials-a-height;
+      @include flex-center-vertical;
+      @include flex-center-horizontal;
+      display: inline-flex;
+      margin: $footer-socials-a-margin;
+      @media screen and (max-width: $breakpoint-md) {
+        width: 55px;
+        height: 55px;
+      }
+      svg {
+        fill: $footer-socials-a-svg-fill;
+        height: $footer-socials-a-svg-height;
+        @media screen and (max-width: $breakpoint-md) {
+          height: 25px;
+        }
+      }
+      &:hover {
+        svg {
+          fill: $footer-socials-a-hover-svg-fill;
+        }
+      }
+    }
+  }
+
+  // Addresses
+  &__addresses {
+    width: 100%;
+    max-width: 1000px;
+    text-align: $footer-addresses-text-align;
+    padding: $footer-addresses-padding;
+    color: $footer-addresses-color;
+    @include flex-between;
+    @media screen and (max-width: $breakpoint-sm) {
+      display: block;
+    }
+    &--item {
+      width: 100%;
+      text-align: center;
+      position: relative;
+      display: grid;
+      grid-template-rows: 80px auto auto;
+      @media screen and (max-width: $breakpoint-md) {
+        grid-template-rows: 90px 1fr auto auto;
+      }
+      &:not(:last-child) {
+        border-bottom: 1px solid $color-tertiary;
+        margin-bottom: 3rem;
+        padding-bottom: 3rem;
+        &:after {
+          content: "";
+          display: block;
+          margin: 1rem auto 2rem;
+          width: 1px;
+          height: 100%;
+          background: $color-secondary;
+          @include vertical-center;
+          right: 0;
+          @media screen and (max-width: $breakpoint-sm) {
+            display: none;
+          }
+        }
+      }
+    }
+    &--title {
+      font-family: $footer-addresses-h3-font-family;
+      font-size: $footer-addresses-h3-font-size;
+      margin-bottom: $footer-addresses-h3-margin-bottom;
+      font-weight: $footer-addresses-h3-font-weight;
+      color: $footer-addresses-h3-color;
+      text-transform: uppercase;
+      line-height: $type-height;
+      span {
+        display: block;
+        text-transform: none;
+      }
+    }
+    &--address,
+    &--phone {
+      font-size: $footer-addresses-p-font-size;
+      margin-bottom: 0;
+    }
+    &--phone {
+      margin-bottom: $footer-addresses-p-margin-bottom;
+    }
+    a {
+      color: $footer-addresses-a-color;
+      text-decoration: none;
+      font-weight: $font-weight-medium;
+      text-decoration: underline;
+      &:hover {
+        font-weight: $font-weight-bold;
+      }
+    }
+  }
+
+  // Copyright
+  &__copy {
+    background: $footer-copyright-background;
+    padding: 1rem 0;
+    p {
+      font-size: $footer-copyright-font-size;
+      margin-bottom: 0;
+      @media screen and (max-width: $breakpoint-md) {
+        font-size: 14px;
+      }
+    }
+    a {
+      color: $footer-copyright-color;
+      text-decoration: none;
+      &:hover {
+        color: $footer-copyright-hover;
+      }
+    }
+  }
+}
