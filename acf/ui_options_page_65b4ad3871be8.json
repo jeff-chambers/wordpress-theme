@@ -1,0 +1,22 @@
+{
+    "key": "ui_options_page_65b4ad3871be8",
+    "title": "Site Settings",
+    "active": true,
+    "menu_order": 0,
+    "page_title": "Site Settings",
+    "menu_slug": "site-settings",
+    "parent_slug": "none",
+    "advanced_configuration": 1,
+    "icon_url": "dashicons-sos",
+    "menu_title": "Site Settings",
+    "position": 150,
+    "redirect": 1,
+    "description": "Custom settings",
+    "update_button": "Update",
+    "updated_message": "Options Updated",
+    "capability": "edit_posts",
+    "data_storage": "options",
+    "post_id": "",
+    "autoload": 0,
+    "modified": 1706572752
+}

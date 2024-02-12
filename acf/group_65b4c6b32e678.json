@@ -1,0 +1,65 @@
+{
+    "key": "group_65b4c6b32e678",
+    "title": "Tracking & Schema",
+    "fields": [
+        {
+            "key": "field_65b4c6b3928bc",
+            "label": "Google Tag Manager",
+            "name": "google_tag_manager",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Paste the Tag ID from <a href=\"https:\/\/support.google.com\/tagmanager\/answer\/12326985?hl=en#:~:text=A%20tag%20ID%20is%20an,can%20have%20multiple%20tag%20IDs.\" target=\"_blank\">Google Tag Manager<\/a>\r\n<br><br>\r\n&lt;script async src=&quot;https:\/\/www.googletagmanager.com\/gtag\/js?id=<strong>G-BHGCV7WJ9V<\/strong>&quot;&gt;&lt;\/script&gt;\r\n<br>\r\n&lt;script&gt;\r\n<br>\r\n  &nbsp;&nbsp;window.dataLayer = window.dataLayer || [];\r\n<br>\r\n  &nbsp;&nbsp;function gtag(){dataLayer.push(arguments);}\r\n<br>\r\n  &nbsp;&nbsp;gtag('js', new Date());\r\n<br>\r\n  &nbsp;&nbsp;gtag('config', '<strong>G-BHGCV7WJ9V<\/strong>');\r\n<br>\r\n&lt;\/script&gt;",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "G-BHGCV7WJ9V",
+            "prepend": "https:\/\/www.googletagmanager.com\/gtag\/js?id=",
+            "append": ""
+        },
+        {
+            "key": "field_65b4c99ce7ee6",
+            "label": "Schema",
+            "name": "schema",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "Paste in your Structured Data from <a href=\"https:\/\/www.schema.org\" target=\"_blank\">Schema.org<\/a>\r\n<br><br>\r\n<strong>Example:<\/strong>\r\n<br>\r\n&lt;script type=&quot;application\/ld+json&quot;&gt;{\r\n<br>\r\n&nbsp;&nbsp;&quot;@context&quot;: &quot;https:\/\/schema.org\/&quot;,\r\n<br>\r\n&nbsp;&nbsp;&quot;@type&quot;: &quot;CreativeWorkSeries&quot;,\r\n<br>\r\n&nbsp;&nbsp;&quot;name&quot;: &quot;Attorney Law Office&quot;,\r\n<br>\r\n&nbsp;&nbsp;&quot;aggregateRating&quot;: {\r\n<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&quot;@type&quot;: &quot;AggregateRating&quot;,\r\n<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&quot;ratingValue&quot;: &quot;5&quot;,\r\n<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&quot;bestRating&quot;: &quot;5&quot;,\r\n<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&quot;ratingCount&quot;: &quot;114&quot;\r\n<br>\r\n&nbsp;&nbsp;}\r\n<br>\r\n}\r\n<br>\r\n&lt;\/script&gt;",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "rows": "",
+            "placeholder": "",
+            "new_lines": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "options_page",
+                "operator": "==",
+                "value": "tracking-schema"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "modified": 1706347488
+}

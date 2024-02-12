@@ -1,0 +1,23 @@
+{
+    "key": "ui_options_page_65b4c65ee7883",
+    "title": "Tracking & Schema",
+    "active": true,
+    "menu_order": 0,
+    "page_title": "Tracking & Schema",
+    "menu_slug": "tracking-schema",
+    "parent_slug": "site-settings",
+    "advanced_configuration": 0,
+    "icon_url": "",
+    "menu_title": "",
+    "position": "",
+    "redirect": false,
+    "description": "",
+    "update_button": "Update",
+    "updated_message": "Options Updated",
+    "capability": "edit_posts",
+    "data_storage": "options",
+    "post_id": "",
+    "autoload": 0,
+    "_parent": 7,
+    "modified": 1706346110
+}
