@@ -1,0 +1,184 @@
+@use "../variables/variables" as *;
+// ==========================================================================
+// Alignment
+// ==========================================================================
+@mixin vertical-center {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+@mixin horizontal-center {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin flex-center-vertical {
+  display: flex;
+  align-items: center;
+}
+
+@mixin flex-center-horizontal {
+  display: flex;
+  justify-content: center;
+}
+
+@mixin flex-even {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+@mixin flex-between {
+  display: flex;
+  justify-content: space-between;
+}
+
+// ==========================================================================
+// Grids
+// ==========================================================================
+@mixin grid($columns, $gap) {
+  display: grid;
+  grid-template-columns: repeat($columns, 1fr);
+  grid-gap: $gap;
+}
+
+// ==========================================================================
+// Buttons
+// ==========================================================================
+@mixin button($color, $background, $border-radius) {
+  color: $color;
+  background: $background;
+  padding: 1rem 2rem;
+  border-radius: $border-radius;
+  font-size: $type-body;
+  font-weight: $font-weight-bold;
+  text-transform: uppercase;
+  transition: all 0.3s ease-in-out;
+  display: inline-block;
+  line-height: 1;
+  &:before {
+    content: "click here to";
+    font-size: 1rem;
+    text-transform: none;
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+  &:hover {
+    color: $color-black;
+    background: $color;
+  }
+  @media screen and (max-width: $breakpoint-md){
+    font-size: 15px;
+    &:before {
+      font-size: 13px;
+    }
+  }
+  @media screen and (max-width: $breakpoint-sm){
+    font-size: 12.69px;
+    border-radius: 40px;
+    &:before {
+      font-size: 11.28px;
+    }
+    
+  }
+}
+
+// ==========================================================================
+// Background Image
+// ==========================================================================
+@mixin background-image {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+  }
+}
+
+// ==========================================================================
+// Slick Carousels
+// ==========================================================================
+@mixin slick-carousel(
+  $item-spacing,
+  $dots-size,
+  $dots-color,
+  $dots-active-color,
+  $dots-spacing,
+  $arrows-image,
+  $arrows-width,
+  $arrows-height,
+  $arrows-position
+) {
+  .slick-list {
+    margin: 0 calc($item-spacing * -1);
+  }
+  .slick-track {
+    display: flex !important;
+  }
+  .slick-slide {
+    height: inherit !important;
+    margin: 0 $item-spacing $item-spacing;
+  }
+  // Dots Pagination
+  .slick-dots {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: inline-flex;
+    font-size: 0;
+    cursor: pointer;
+    li {
+      width: $dots-size;
+      height: $dots-size;
+      border-radius: 100%;
+      background-color: $dots-color;
+      &:not(:last-child) {
+        margin-right: $dots-spacing;
+      }
+      &.slick-active {
+        background-color: $dots-active-color;
+      }
+    }
+    button {
+      opacity: 0;
+      width: $dots-size;
+      height: $dots-size;
+      cursor: pointer;
+    }
+  }
+  // Arrows Pagination
+  .slick-arrow {
+    background: url($arrows-image) center center / contain no-repeat;
+    border: 0;
+    font-size: 0;
+    width: $arrows-width;
+    height: $arrows-height;
+    cursor: pointer;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    position: absolute;
+  }
+  .slick-prev {
+    left: $arrows-position;
+  }
+  .slick-next {
+    right: $arrows-position;
+    transform: rotate(180deg);
+  }
+}
