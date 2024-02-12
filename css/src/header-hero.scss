@@ -1,0 +1,429 @@
+@use "../variables/variables" as *;
+@use "../variables/mixins" as *;
+
+// ==========================================================================
+// Header
+// ==========================================================================
+.header {
+  position: fixed;
+  height: $header-height;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+  background: $header-background-color;
+  transition: all 0.5s ease;
+  @media screen and (max-width: $breakpoint-md) {
+    height: 90px;
+  }
+  @media screen and (max-width: $breakpoint-sm) {
+    background-color: $color-black;
+  }
+  // Scrolled Background Color
+  &__scrolled {
+    background: $header-background-color-scrolled;
+    @media screen and (max-width: $breakpoint-sm) {
+      .header__cta {
+        background-color: $color-black;
+      }
+    }
+  }
+  // Container
+  &__container {
+    display: grid;
+    grid-template-columns: $header-grid;
+    @media screen and (max-width: 1500px) {
+      grid-template-columns: auto auto 220px;
+    }
+    @media screen and (max-width: $breakpoint-md) {
+      grid-template-columns: 1fr 1fr 60px;
+    }
+  }
+  // Logo
+  &__logo {
+    padding: 1rem;
+    height: $header-height;
+    display: inline-flex;
+    @media screen and (max-width: 1500px) {
+      width: 360px;
+    }
+    @media screen and (max-width: 1400px) {
+      width: 300px;
+    }
+    @media screen and (max-width: $breakpoint-md) {
+      height: auto;
+    }
+    img {
+      width: 100%;
+      object-fit: contain;
+      @media screen and (max-width: $breakpoint-md) {
+        height: 60px;
+        width: auto;
+      }
+    }
+  }
+  // Navigation Container
+  &__nav {
+    position: relative;
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    align-items: end;
+    padding: $header-menu-padding;
+    @media screen and (max-width: $breakpoint-md) {
+      display: none;
+      position: absolute;
+      width: 100%;
+      top: 90px;
+      left: 0;
+      padding: 0;
+      background-color: $color-black;
+      text-align: center;
+      z-index: 15;
+    }
+  }
+  // Navigation Menu
+  &__menu {
+    display: flex;
+    justify-content: space-between;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    max-width: $header-menu-width;
+    @media screen and (max-width: $breakpoint-md) {
+      max-width: 100%;
+      display: block;
+    }
+    // Menu Items
+    li {
+      position: relative;
+      margin-left: 1rem;
+      padding-bottom: $header-menu-bottom-spacing;
+      @media screen and (max-width: $breakpoint-md) {
+        padding: 1rem;
+      }
+      // Memu Links
+      a {
+        color: $header-menu-link-color;
+        text-transform: uppercase;
+        position: relative;
+        @media screen and (max-width: 1500px) {
+          font-size: 14px;
+        }
+        @media screen and (max-width: 1300px) {
+          font-size: 12px;
+        }
+        @media screen and (max-width: $breakpoint-md) {
+          font-size: 14px;
+        }
+        &:hover {
+          color: $color-primary;
+        }
+      }
+    }
+    // Current Menu Item
+    .current-menu-item,
+    .current-menu-parent {
+      a {
+        font-weight: $font-weight-bold;
+      }
+    }
+    // Menu Item with Children
+    .menu-item-has-children {
+      > a {
+        &::after {
+          content: "";
+          position: absolute;
+          top: 50%;
+          right: calc(
+            -1 * ($header-submenu-icon-height + $header-submenu-icon-width)
+          );
+          width: 0;
+          height: 0;
+          border-top: $header-submenu-icon-width solid $header-menu-icon-color;
+          border-left: $header-submenu-icon-height solid transparent;
+          border-right: $header-submenu-icon-height solid transparent;
+          transform: translateY(-50%);
+        }
+      }
+    }
+    // Sub Menu
+    .sub-menu {
+      display: none;
+      position: absolute;
+      top: calc(100% - 5px);
+      left: 0;
+      width: $header-submenu-width;
+      background: $header-submenu-background-color;
+      text-align: $header-sub-menu-text-align;
+      list-style-type: none;
+      padding: 0;
+      @media screen and (max-width: $breakpoint-md) {
+        position: relative;
+        width: 100%;
+        top: 0;
+        margin-top: 1rem;
+      }
+      // Sub Menu Items
+      li {
+        margin-left: 0;
+        padding-bottom: 0;
+        @media screen and (max-width: $breakpoint-md) {
+          padding: 0;
+        }
+        // Sub Menu Links
+        a {
+          color: $color-white;
+          border-bottom: $header-submenu-link-border;
+          display: block;
+          padding: 0.5rem;
+          font-weight: $font-weight-normal;
+          &:hover {
+            color: $color-primary;
+          }
+          @media screen and (max-width: $breakpoint-md) {
+            padding: 1rem;
+          }
+        }
+        &:last-child {
+          a {
+            border-bottom: 0;
+          }
+        }
+      }
+      // Sub Menu Item with Children
+      .menu-item-has-children {
+        > a {
+          &::after {
+            transform: translateX(-1rem) translateY(-50%) rotate(-90deg) !important;
+            @media screen and (max-width: $breakpoint-md) {
+              transform: translateX(-1rem) translateY(-50%) rotate(0) !important;
+            }
+          }
+        }
+      }
+      // Tertiary Sub Menu
+      .sub-menu {
+        top: 0;
+        left: 100%;
+        @media screen and (max-width: $breakpoint-md) {
+          left: 0;
+          background-color: $color-white;
+          margin-top: 0;
+          a {
+            color: $color-black;
+          }
+        }
+      }
+    }
+    li:hover {
+      > .sub-menu {
+        display: block;
+      }
+    }
+  }
+  // CTA Container
+  &__cta {
+    position: relative;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 1rem;
+    margin-left: auto;
+    font-size: $header-phone-font-size;
+    font-family: $header-phone-font-family;
+    font-weight: $header-phone-font-weight;
+    color: $header-phone-color;
+    text-align: right;
+    @media screen and (max-width: 1500px) {
+      font-size: 22px;
+      width: 230px;
+      height: 90px;
+      padding-top: 3rem;
+    }
+    @media screen and (max-width: 1300px) {
+      padding-top: 1rem;
+    }
+    @media screen and (max-width: $breakpoint-sm) {
+      position: absolute;
+      top: 85px;
+      width: 100%;
+      text-align: center;
+      left: 0;
+      right: 0;
+      background-color: $header-background-color;
+      display: block;
+      font-size: 28px;
+      padding: 2rem 1rem;
+      height: 120px;
+    }
+  }
+  // Phone Number
+  &__phone {
+    color: $header-phone-color;
+    margin-bottom: 1rem;
+    @media screen and (max-width: 1500px) {
+      margin-bottom: 0;
+    }
+    @media screen and (max-width: $breakpoint-sm) {
+      margin-bottom: 1rem;
+    }
+  }
+  // Tagline
+  &__tagline {
+    font-size: $header-tagline-font-size;
+    font-family: $header-tagline-font-family;
+    font-weight: $header-tagline-font-weight;
+    @media screen and (max-width: 1500px) {
+      font-size: 18px;
+    }
+    @media screen and (max-width: $breakpoint-md) {
+      font-size: 19px;
+      margin-bottom: 0;
+    }
+    @media screen and (max-width: $breakpoint-sm) {
+      font-size: 20px;
+    }
+  }
+  // Menu Toggle
+  &__toggle {
+    display: none;
+    @media screen and (max-width: $breakpoint-md) {
+      display: block;
+      font-size: 16px;
+      text-transform: uppercase;
+      color: $color-white;
+      font-weight: $font-weight-bold;
+      padding-top: 15px;
+      width: 85px;
+      height: 90px;
+      i {
+        width: 46px;
+        height: 4px;
+        display: block;
+        margin: 0 auto 6px;
+        background-color: $color-white;
+        &:first-child {
+          margin-top: 14px;
+        }
+      }
+    }
+    @media screen and (max-width: $breakpoint-sm) {
+      background-color: #121212;
+      position: absolute;
+      top: 0;
+      right: 0;
+    }
+  }
+}
+
+// ==========================================================================
+// Hero
+// ==========================================================================
+.hero {
+  height: $hero-height;
+  overflow: hidden;
+  @include flex-center;
+  &__image {
+    @include background-image;
+  }
+  &__content {
+    position: relative;
+    z-index: 5;
+    color: $color-white;
+    font-size: $hero-content-font-size;
+    line-height: $hero-content-line-height;
+    transform: translateY(calc($header-height / 2));
+  }
+  &__title {
+    font-family: $font-heading;
+    font-size: $hero-title-font-size;
+    font-weight: $font-weight-normal;
+    line-height: 1;
+    margin-bottom: $hero-title-margin;
+  }
+  &__tagline {
+    margin-bottom: $hero-tagline-margin;
+    max-width: $hero-content-width;
+    margin: 0 auto $hero-tagline-margin;
+  }
+}
+
+// ==========================================================================
+// Home Page Hero
+// ==========================================================================
+.home {
+  .hero {
+    height: 100vh;
+    background-color: $color-black;
+    @media screen and (max-width: $breakpoint-md) {
+      height: 530px;
+    }
+    @media screen and (max-width: $breakpoint-sm) {
+      height: 690px;
+      padding-top: 260px;
+    }
+    &__content {
+      transform: none;
+    }
+    &__title {
+      font-size: $hero-title-font-size;
+      @media screen and (max-width: $breakpoint-md) {
+        font-size: 60px;
+      }
+      @media screen and (max-width: $breakpoint-md) {
+        font-size: 48px;
+        line-height: 60px;
+        max-width: 260px;
+        margin: 0 auto 1rem;
+      }
+    }
+    &__image {
+      display: none;
+      @media screen and (max-width: $breakpoint-md) {
+        display: block;
+      }
+    }
+    &__video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: auto;
+      height: 100vh;
+      opacity: 0.25;
+      @media screen and (max-width: $breakpoint-md) {
+        display: none;
+      }
+    }
+    &__title {
+      font-size: 110px;
+    }
+    &__tagline {
+      font-size: 24px;
+      line-height: 36px;
+      @media screen and (max-width: $breakpoint-md) {
+        font-size: 16px;
+        line-height: 24px;
+      }
+      @media screen and (max-width: $breakpoint-sm) {
+        font-size: 18px;
+        line-height: 25px;
+        padding: 0 1rem;
+      }
+    }
+  }
+}
+
+// ==========================================================================
+// Mobile Internal Hero
+// ==========================================================================
+
+body:not(.home) {
+  @media screen and (max-width: $breakpoint-sm) {
+    .hero, .header__cta {
+      display: none;
+    }
+  }
+}

@@ -1,0 +1,213 @@
+@use "../variables/variables" as *;
+@use "../variables/mixins" as *;
+ 
+* {
+  -webkit-font-smoothing: antialiased;
+}
+*,
+*:after,
+*:before {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+html {
+  font-family: sans-serif;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: $font-body;
+  overflow-x: hidden;
+  color: $color-body;  
+  position: relative;
+} 
+
+// ==========================================================================
+// Typography
+// ==========================================================================
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0 0 1rem;
+  line-height: 1.2;
+} 
+
+h1 { 
+  font-family: $font-heading;
+  font-size: $type-h1;
+  font-weight: $font-weight-normal;
+}
+
+h2 {
+  font-size: $type-h2;
+  font-weight: $font-weight-medium;
+  text-transform: uppercase;
+}
+
+h3 {
+  font-size: $type-h3;
+  font-weight: $font-weight-normal;
+  color: $color-primary;
+}
+
+h4 {
+  font-size: $type-h4;
+  font-weight: $font-weight-normal;
+}
+ 
+p {
+  font-size: $type-body;
+  line-height: $type-height;
+  margin: 0 0 1rem;
+  @media screen and (max-width: $breakpoint-md){
+    font-size: 14px;
+    line-height: 24px;
+  }
+} 
+
+a {
+  color: $color-primary; 
+  text-decoration: none;
+  transition: all 0.25s ease-in-out;
+  svg {
+    transition: all .25s ease-in-out;
+  }
+} 
+
+.btn { 
+  @include button($color-white, $color-primary, 20px);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+// ==========================================================================
+// Helpers
+// ==========================================================================
+.text-center {
+  text-align: center;
+}
+
+
+// ==========================================================================
+// Sections & Containers
+// ==========================================================================
+section {
+  position: relative;
+  padding: $section-spacing-desktop 0;
+  @media (max-width: $breakpoint-md) {
+    padding: $section-spacing-mobile 0;
+  }
+}
+
+.container {
+  margin: 0 auto;
+  padding: 0 $container-padding;
+  width: 100%;
+  max-width: $container-width;
+}
+
+.container-large {
+  max-width: $container-large-width;
+}
+
+.container-xl {
+  max-width: $container-xl-width;
+}
+
+.container-fluid {
+  padding: 0 $container-padding;
+  max-width: 100%;
+}
+
+// ==========================================================================
+// Main Content & Sidebar
+// ==========================================================================
+.main {
+  @media screen and (max-width: $breakpoint-sm) {
+    padding-top: 120px;
+  }
+  &__container {
+    display: grid;
+    grid-template-columns: $content-grid;
+    grid-column-gap: $content-gap; 
+    @media (max-width: $breakpoint-md) {
+      grid-template-columns: 1fr;
+    }
+  }
+  &__title {
+    border-bottom: 1px solid;
+    padding-bottom: 1rem;
+    margin-bottom: 2rem;
+  }
+  &__content {
+    max-width: $content-width;
+    ol, ul {
+      font-size: $type-body;
+      line-height: $type-height;
+      @media screen and (max-width: $breakpoint-md){
+        font-size: 14px;
+        line-height: 24px;
+      }
+    }
+    ul {
+      li {
+        &::marker {
+          color: $color-primary;  
+        }
+      }
+    }
+    ol {
+      li {
+        &::marker {
+          font-weight: $font-weight-medium;
+        }
+      }
+    }
+    a {
+      text-decoration: underline;
+      &:hover {
+        text-decoration: none;
+      }
+    }
+  }
+}
+
+.sidebar {
+  &__title {
+    background: $color-black;
+    color: $color-white;
+    font-family: $font-heading;
+    font-size: $sidebar-title-font-size;
+    line-height: 1;
+    padding: $sidebar-padding;
+    margin-bottom: 0px;
+  }
+  &__menu {
+    list-style-type: none;
+    margin: 0;
+    padding: $sidebar-padding; 
+    box-shadow: $box-shadow;
+  }
+  li:not(:last-child) {
+    margin-bottom: $sidebar-list-margin;
+  }
+  a {
+    color: $color-black;
+    text-transform: uppercase;
+    &:hover {
+      font-weight: $font-weight-bold;
+    }
+  }
+  .current-menu-item {
+    font-weight: $font-weight-bold;
+  }
+}
