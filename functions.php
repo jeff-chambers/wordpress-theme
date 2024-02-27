@@ -43,7 +43,10 @@ Add Custom User Role
 */
 include_once('functions/user-role.php');
 
-
+/*
+Minify HTML Output
+*/
+include_once('functions/minify-html.php');
 
 
 
